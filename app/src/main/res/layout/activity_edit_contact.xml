@@ -1,0 +1,87 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.uncc.contactsdirectory.EditContact"
+    android:orientation="vertical"
+    android:id="@+id/layout_editContact"
+    android:padding="@dimen/activityPadding">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/label_btn_selectContact"
+        android:id="@+id/btn_selectContact"
+        android:layout_marginBottom="@dimen/pad_edt" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/edt_nameSelected"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="@dimen/pad_edt"
+        android:paddingRight="@dimen/pad_edt"
+        android:layout_marginBottom="@dimen/pad_edt"
+        android:hint="@string/hint_edt_name" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
+        android:id="@+id/edt_phoneSelected"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="@dimen/pad_edt"
+        android:paddingRight="@dimen/pad_edt"
+        android:layout_marginBottom="@dimen/pad_edt"
+        android:hint="@string/hint_edt_phone" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/edt_emailSelected"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="@dimen/pad_edt"
+        android:paddingRight="@dimen/pad_edt"
+        android:layout_marginBottom="@dimen/pad_edt"
+        android:hint="@string/hint_edt_email" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_addImageSelected"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/default_contact_image"
+        android:background="@color/background_color"
+        android:layout_marginBottom="@dimen/pad_edt" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/layout_cont_edit_cancel_btn"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_btn_saveContact"
+            android:id="@+id/btn_editContact"
+            android:layout_marginBottom="@dimen/dim_bottom_spacing"
+            android:layout_marginRight="@dimen/activityPadding"
+            android:minWidth="@dimen/btn_half_width_min" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_btn_cancel"
+            android:id="@+id/btn_cancelEditContact"
+            android:layout_marginLeft="@dimen/activityPadding"
+            android:layout_marginBottom="@dimen/dim_bottom_spacing"
+            android:minWidth="@dimen/btn_half_width_min" />
+
+    </LinearLayout>
+</LinearLayout>

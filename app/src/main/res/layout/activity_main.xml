@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:id="@+id/layout_mainActivity"
+    android:padding="@dimen/activityPadding"
+    android:orientation="vertical">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/label_btn_createContact"
+        android:id="@+id/btn_createContact"
+        android:layout_marginBottom="@dimen/dim_bottom_spacing" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/label_btn_editContact"
+        android:id="@+id/btn_editContact"
+        android:layout_marginBottom="@dimen/dim_bottom_spacing" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/label_btn_deleteContact"
+        android:id="@+id/btn_deleteContact"
+        android:layout_marginBottom="@dimen/dim_bottom_spacing" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/label_btn_displayContacts"
+        android:id="@+id/btn_displayContacts"
+        android:layout_marginBottom="@dimen/dim_bottom_spacing" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/label_btn_finish"
+        android:id="@+id/btn_finish"
+        android:layout_marginBottom="@dimen/dim_bottom_spacing" />
+</LinearLayout>

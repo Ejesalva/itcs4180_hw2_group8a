@@ -1,0 +1,79 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.uncc.contactsdirectory.CreateContact"
+    android:padding="@dimen/activityPadding"
+    android:id="@+id/layout_createContact"
+    android:orientation="vertical">
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/edt_name"
+        android:hint="@string/hint_edt_name"
+        android:paddingLeft="@dimen/pad_edt"
+        android:paddingRight="@dimen/pad_edt"
+        android:layout_marginBottom="@dimen/dim_bottom_spacing"
+        android:maxLength="@integer/max_name_length" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
+        android:id="@+id/edt_phone"
+        android:layout_marginBottom="@dimen/dim_bottom_spacing"
+        android:hint="@string/hint_edt_phone"
+        android:paddingLeft="@dimen/pad_edt"
+        android:paddingRight="@dimen/pad_edt"
+        android:maxLength="@integer/phone_length" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/edt_email"
+        android:paddingRight="@dimen/pad_edt"
+        android:paddingLeft="@dimen/pad_edt"
+        android:hint="@string/hint_edt_email" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_addImage"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/dim_bottom_spacing"
+        android:src="@drawable/default_contact_image"
+        android:background="@color/background_color" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/layout_cont_save_cancel_btn"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_btn_saveContact"
+            android:id="@+id/btn_saveContact"
+            android:layout_marginBottom="@dimen/dim_bottom_spacing"
+            android:layout_marginRight="@dimen/activityPadding"
+            android:minWidth="@dimen/btn_half_width_min" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_btn_cancel"
+            android:id="@+id/btn_cancelContact"
+            android:layout_marginLeft="@dimen/activityPadding"
+            android:layout_marginBottom="@dimen/dim_bottom_spacing"
+            android:minWidth="@dimen/btn_half_width_min" />
+
+    </LinearLayout>
+</LinearLayout>

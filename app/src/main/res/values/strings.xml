@@ -18,4 +18,5 @@
     <string name="label_btn_saveContact">Save</string>
     <string name="label_btn_cancel">Cancel</string>
     <string name="label_btn_selectContact">Select Contact</string>
+    <string name="label_btn_delContact">Delete</string>
 </resources>

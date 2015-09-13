@@ -16,13 +16,6 @@ public class User implements Parcelable {
         this.img_uri = img_uri;
     }
 
-    public void editAllFields(String email, String name, String phoneNumber, String img_uri){
-        this.email = email;
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.img_uri = img_uri;
-    }
-
     protected User(Parcel in) {
         name = in.readString();
         email = in.readString();

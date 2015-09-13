@@ -60,6 +60,8 @@ public class EditContact extends AppCompatActivity {
 
                             selectedUser = contact;
                             selectedUserId = which;
+                            image_uri = selectedUser.img_uri;
+
                         }
                     });
 
@@ -69,39 +71,38 @@ public class EditContact extends AppCompatActivity {
             });
         }
 
-        if(selectedUser != null){
-            btn_editContact.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        btn_editContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (selectedUser != null) {
                     EditText edt_nameSelected = (EditText) findViewById(R.id.edt_nameSelected);
                     EditText edt_phoneSelected = (EditText) findViewById(R.id.edt_phoneSelected);
                     EditText edt_emailSelected = (EditText) findViewById(R.id.edt_emailSelected);
 
-                    if(getStringFromEdt(edt_nameSelected).trim().equals("")){
-                        Toast.makeText(EditContact.this,"Please input a valid name",Toast.LENGTH_SHORT).show();
+                    if (getStringFromEdt(edt_nameSelected).trim().equals("")) {
+                        Toast.makeText(EditContact.this, "Please input a valid name", Toast.LENGTH_SHORT).show();
                         edt_nameSelected.requestFocus();
-                    }
-                    else if(getStringFromEdt(edt_phoneSelected).trim().length() < 10){
-                        Toast.makeText(EditContact.this,"Please input a valid phone number",Toast.LENGTH_SHORT).show();
+                    } else if (getStringFromEdt(edt_phoneSelected).trim().length() < 10) {
+                        Toast.makeText(EditContact.this, "Please input a valid phone number", Toast.LENGTH_SHORT).show();
                         edt_phoneSelected.requestFocus();
-                    }
-                    else if(!(isEmailValid(getStringFromEdt(edt_emailSelected))) ){
-                        Toast.makeText(EditContact.this,"Please input a valid email",Toast.LENGTH_SHORT).show();
+                    } else if (!(isEmailValid(getStringFromEdt(edt_emailSelected)))) {
+                        Toast.makeText(EditContact.this, "Please input a valid email", Toast.LENGTH_SHORT).show();
                         edt_emailSelected.requestFocus();
-                    }
-                    else {
+                    } else {
                         Intent intent_editContact = new Intent();
-                        selectedUser.editAllFields(getStringFromEdt(edt_emailSelected), getStringFromEdt(edt_phoneSelected), getStringFromEdt(edt_nameSelected), image_uri);
-                        intent_editContact.putExtra(MainActivity.USER_KEY, selectedUser);
+                        User editedContact = new User(getStringFromEdt(edt_emailSelected),getStringFromEdt(edt_nameSelected), getStringFromEdt(edt_phoneSelected), image_uri);
+                        intent_editContact.putExtra(MainActivity.USER_KEY, editedContact);
                         intent_editContact.putExtra(MainActivity.ID_KEY, selectedUserId);
                         setResult(RESULT_OK, intent_editContact);
 
                         finish();
                     }
                 }
-            });
-        }
-        else Toast.makeText(EditContact.this,"Please select a contact to edit", Toast.LENGTH_SHORT).show();
+                else Toast.makeText(EditContact.this,"Please select a contact to edit",Toast.LENGTH_SHORT).show();
+
+            }
+
+        });
 
         btn_cancelEditContact.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,9 +125,7 @@ public class EditContact extends AppCompatActivity {
         return edt.getText().toString();
     }
 
-    boolean isEmailValid(CharSequence email) {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    }
+    boolean isEmailValid(CharSequence email) { return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches(); }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

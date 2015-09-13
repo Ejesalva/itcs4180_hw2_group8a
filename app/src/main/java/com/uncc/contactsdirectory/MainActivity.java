@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     static final int REQUEST_IMAGE_OPEN = 1;
     final static int CONTACT_CODE_CREATE = 1000;
     final static int CONTACT_CODE_EDIT = 1100;
+    final static int CONTACT_CODE_DELETE = 1001;
     final static String CONTACTS_KEY = "contacts";
     final static String USER_KEY = "user";
     final static String ID_KEY = "userId";
@@ -58,6 +59,20 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        btn_deleteContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent activity_deleteContact = new Intent(MainActivity.this, DeleteContact.class);
+                if(!contactList.isEmpty()){
+                    activity_deleteContact.putParcelableArrayListExtra(CONTACTS_KEY,contactList);
+                    startActivityForResult(activity_deleteContact, CONTACT_CODE_DELETE);
+                }
+                else{
+                    Toast.makeText(MainActivity.this,"No contacts to delete",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     @Override
@@ -67,11 +82,12 @@ public class MainActivity extends AppCompatActivity {
                 User data_user = data.getExtras().getParcelable(USER_KEY);
                 contactList.add(data_user);
 
+                assert data_user != null;
                 Toast.makeText(getBaseContext(), "Contact " + data_user.name + " created", Toast.LENGTH_SHORT).show();
 
             }
             else if(resultCode == RESULT_CANCELED){
-                Toast.makeText(getBaseContext(), "Contact creation failed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "Contact creation cancelled", Toast.LENGTH_SHORT).show();
             }
         }
         else if(requestCode == CONTACT_CODE_EDIT){
@@ -80,10 +96,24 @@ public class MainActivity extends AppCompatActivity {
                 User data_user = data.getExtras().getParcelable(USER_KEY);
 
                 contactList.set(data_userId,data_user);
+
+                assert data_user != null;
                 Toast.makeText(getBaseContext(), "Contact " + data_user.name + " edited", Toast.LENGTH_SHORT).show();
             }
             else if(resultCode == RESULT_CANCELED){
-                Toast.makeText(getBaseContext(), "Contact edit failed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), "Contact edit cancelled", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else if(requestCode == CONTACT_CODE_DELETE){
+            if(resultCode == RESULT_OK){
+                int data_userId = data.getExtras().getInt(ID_KEY);
+                contactList.remove(data_userId);
+
+                Toast.makeText(getBaseContext(), "Contact deleted", Toast.LENGTH_SHORT).show();
+
+            }
+            else if(resultCode == RESULT_CANCELED){
+                Toast.makeText(getBaseContext(), "Contact deletion cancelled", Toast.LENGTH_SHORT).show();
             }
         }
     }
